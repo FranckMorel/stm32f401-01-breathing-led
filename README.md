@@ -4,7 +4,7 @@ Bare-metal breathing LED implementation on the STM32F401RE in C with CMSIS, cust
 
 1. Clock Tree
 
-Overview of the STM32F401 clock architecture.
+    Simplified Overview of the STM32F401 clock architecture.
 <img width="521" height="316" alt="Bild 5  Nov  2026, 10_43_23" src="https://github.com/user-attachments/assets/e65e4e97-7aa6-470f-b4d1-426b0471e7fe" />
 
 2. PLL Configuration
