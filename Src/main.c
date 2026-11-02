@@ -1,32 +1,37 @@
 #include "stm32f4xx.h"
 #include <clock.h>
 #include <pwm.h>
-
+#include <systick.h>
 
 int main(void)
 {
-	uint16_t brightness = 0;
-	int8_t direction = 1;
-	uint32_t stepdelay = 5000;
 
+	uint16_t brightness = 500; /*0 - 1000*/
+	int8_t direction = 1;
 
 	clock_Init();
+	SysTick_Init();
 	pwm_Init();
+
+	uint32_t lastTime = SysTick_GetMillis();
 
 	while(1)
 	{
 		set_dutyCycle(brightness);
 
-		brightness += direction;
-		if(brightness >= TIM2->ARR)
-		{
-			direction = -1;
-		}else if(brightness == 0){
 
-			direction = 1;
+		if(SysTick_GetMillis() - lastTime >= 2){
+			brightness += direction;
+			if(brightness >= 1000)
+			{
+				direction = -1;
+			}else if(brightness == 0){
+
+				direction = 1;
+			}
+
+			lastTime = SysTick_GetMillis();
 		}
-
-		for(volatile uint32_t i=0; i<stepdelay; i++){}
 
 	}
 

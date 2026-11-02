@@ -23,9 +23,9 @@ void pwm_Init()
 	GPIOA->AFR[0] &= ~(15U<<5U*4U);
 	GPIOA->AFR[0] |=  (1U<<5U*4U);
 
-	/*Set f= 2KHZ, with Input frequency for TIM2 as 72MHZ*/
-	TIM2->PSC = 72 - 1;
-	TIM2->ARR = 2000 - 1;
+	/*Set f= 500HZ, with Input frequency for TIM2 as 72MHZ*/
+	TIM2->PSC = 72U - 1U;
+	TIM2->ARR = 2000U - 1U;
 	//TIM2->CCR1 = 0; /*Start with 0% Duty Cycle*/
 
 	/*Config to PWM Mode1 */
